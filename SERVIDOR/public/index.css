@@ -1,0 +1,352 @@
+/* index.css */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background-image: url("svg.png");
+  background-size:cover;
+  background-attachment: fixed;
+}
+
+.container-total {
+  margin: auto;
+  max-width: 1180px;
+  /*height: 100vh;*/
+  min-height: 100%;
+  font-family: 'Trebuchet MS', sans-serif;
+  background-color: rgba(255, 255, 255, 50%);
+  box-shadow: 2px 2px 4px #999999;
+  position: relative;
+}
+
+.container-edital {
+
+}
+
+.container-materia {
+
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(0,100,200);
+  padding: 0px;
+  box-shadow: 2px 2px 4px #999999;
+  height:50px;
+  position:sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.logo {
+  color: white;
+  font-size: 30px;
+  padding: 10px;
+}
+
+/*DROPDOWN*/
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top:0;
+  right: 50px;
+  /*background-color: #f9f9f9;*/
+  min-width: auto;
+  /*box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);*/
+  z-index: 4;
+  background-color: rgb(0,100,200,.8);
+}
+
+.dropdown-content a {
+  color: white;
+  padding: 0 5px 0 15px;
+  text-decoration: none;
+  font-size: 20px;
+
+  display: flex;
+  align-items: center;
+  height: 49px;
+  cursor: pointer;
+}
+
+.dropdown-content a:hover {color: #021691;}
+
+.dropdown:hover .dropdown-content {
+  /*display: flex;*/
+  display: flex;
+}
+
+.nome-usuario {
+  /*deixar o texto em linha*/
+  display: inline-block;
+  /*no wrap*/
+  white-space: nowrap;
+  /*não deixar o texto quebrar*/
+  overflow: hidden;
+}
+
+.dropdown:hover .material-icons {
+  color: #021691;
+  cursor:pointer;
+}
+
+.nav-editais {
+  display:flex;
+  flex-wrap: wrap;
+  padding: 15px;
+  gap:10px;
+  /*width:fit-content;*/
+}
+
+.button-add, .button-selecionado, .button-edital, .button-materia {
+  display: flex;
+  /*flex-wrap: wrap;*/
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  min-width: 180px;
+  min-height: 40px;
+  font-size: 20px;
+
+  box-shadow: 2px 2px 4px #999999;
+  margin:0px;
+  border-radius: 3px;
+  flex: 1;
+  /* quebrar texto ou palavra caso esta seja maior que a largura do elemento */
+  word-break: break-word;
+  /* e caso a palavra seja maior que a largura do elemento */
+  overflow-wrap: break-word;
+  border: 1px solid rgb(0,100,200);
+}
+
+.button-add {
+  background-color: white;
+  color: rgb(0,100,200);
+}
+
+.button-selecionado  {
+  background-color:  rgb(0,100,200);
+  color:white;
+}
+
+.button-edital, .button-materia {
+  background-color: dodgerblue;
+  color:white;
+}
+
+.button-edital, .nav-editais .button-selecionado, .nav-editais .button-add{
+  max-width: 25%;
+}
+.button-materia, .col-materias .button-selecionado, .col-materias .button-add{
+  max-width: 50%;
+}
+
+.button-add:hover, .button-selecionado:hover, .button-materia:hover , .button-edital:hover{
+  box-shadow: 0 0 0 #999999;
+  color:white;
+  background-color: rgb(0,100,200);
+  cursor:pointer;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 10px 0px;
+  font-size: 16px;
+  word-break: break-word;
+}
+
+li {
+  display:grid;
+  grid-template-columns: 40px auto 30px 30px 30px;
+  align-items: center;
+  cursor:pointer;
+  padding: 5px;
+}
+
+.container-topics li {
+  background-color:whitesmoke;
+  border-radius:5px;
+  margin:3px;
+}
+
+.container-topics li:hover {
+  background-color: lightgray;
+}
+
+.container-infos-materias {
+
+  display: grid;
+  grid-template-columns: 50% auto;
+  padding: 15px;
+  gap: 15px;
+
+  /**/
+
+}
+
+.col-post-it {
+  padding: 0px 20px 10px 20px;
+  /*margin: 15px 0px 15px 15px;*/
+  background-color: #feff9c;
+  box-shadow: 2px 2px 4px #999999;
+  /*min-width: 350px;*/
+  /*flex:1;*/
+}
+
+.post-it {
+  padding: 0px;
+  border: 0px solid gray;
+  margin-bottom:0px;
+  font-size: 16px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  overflow: auto;
+}
+
+.data-0, .data-1,
+.banca {
+  display:flex;
+  align-items: left;
+}
+
+.nome-banca, .data-inscricao-inicio, .data-inscricao-fim, .data-prova {
+  padding-left: 5px;
+  font-weight: bold;
+}
+
+.button-banca {
+  background-color: #feff9c;
+  border: 0;
+}
+
+.post-it div input {
+  border: 0px solid;
+  background-color: #feff9c;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 16px;
+  margin-bottom: 10px;;
+}
+
+.col-materias {
+  display:flex;
+  flex-wrap: wrap;
+  gap:10px;
+  height:min-content;
+}
+
+.col-materias div {
+  /*margin:5px;*/
+}
+/*
+.nav-2 {
+  width: 100%;
+  display: inline-block;
+  font-size: 30px;
+  padding: 10px 15px;
+  color: white;
+  background-color: rgb(0,100,200);
+  height: 50px;
+
+}
+
+.nav-2 a {
+  color: white;
+}
+*/
+[id*="item"] {
+  width:100%;
+  margin-bottom: 5px;
+  border: 1px solid black;
+  border-style: none none solid;
+  font-size: 16px;
+}
+
+.riscado {
+  text-decoration: line-through;
+}
+
+.container-topics {
+  padding: 20px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.nav-edital, .nav-materia{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  height: 50px;
+  color:white;
+  background-color: rgb(0,100,200);
+  font-size: 30px;
+  box-shadow: 2px 2px 4px #999999;
+  position:sticky;
+  z-index: 1;
+  border-top: 0.5px solid lightgray;
+}
+
+.nav-edital {
+  top: 50px;
+  padding-left: 15px;
+}
+
+.nav-materia {
+  top: 100px;
+  padding-left: 15px;
+}
+
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.container-add-topics {
+  position: sticky;
+  background-color: white;
+  top:150px;
+  padding:10px;
+  border-radius: 5px;
+}
+
+.botao-adicionar {
+  margin-top:5px;
+}
+
+.botao-delimitadores {
+  padding:0px;
+  /*background-color:rgb(232,232,232);*/
+  border-radius: 5px;
+  margin-left:0px;
+  margin-top: 5px;
+  border: 0px lightgray solid;
+}
+
+button {
+  padding: 2px 10px;
+}
+
+.container-topics input[type="text"] {
+  padding: 2px;
+}
+
+.material-icons {
+  color: white;
+}

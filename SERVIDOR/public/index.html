@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <title>EDITALLY</title>
+
+    <link rel="stylesheet" href="http://localhost:3000/index.css">
+    <link rel="shortcut icon" href="logo-no-background.png" type="image/x-icon">
+
+  </head>
+  <body>
+    <div class="container-total">
+      <header>
+        <img src="logo-no-background.png" style="width:auto;height:50px;padding:7px 10px 7px 15px;">
+
+        <div class="dropdown">
+          <i class="material-icons" style="font-size:36px;padding:7px">person</i>
+          <div class="dropdown-content">
+            <a id="nome-usuario" class="nome-usuario" style="color:white; cursor:default"></a>
+            <a href="/perfil.html">Perfil</a>
+            <a onclick="deslogar()">Sair</a>
+            </div>
+        </div>
+      </header>
+
+      <div class="nav-editais" id="nav-editais">
+        <div onclick="importarEdital()" class="button-add">Importar Edital</div>
+        <div onclick="criarEdital()" class="button-add">Novo Edital</div>
+        <!--Novos botões de editais serão adicionados aqui-->
+      </div>
+
+      <div class="container-edital" id="container-edital" style="display:none">
+
+        <div class="nav-edital">
+          <div class="nav-ed-left">
+            <img title="Exportar Excel" onclick="exportarExcel()" style="cursor:pointer" width="33" height="33" src="https://img.icons8.com/material/48/FFFFFF/xls-export.png" alt="xls-export"/>
+            <img title="Exportar JSON" onclick="exportarEdital()" style="cursor:pointer" width="30" height="30" src="https://img.icons8.com/material/48/FFFFFF/json-download.png" alt="json-download"/>
+          </div>
+          <div class="nav-ed-center">
+            <span id="nome-edital">Edital Template</span>
+          </div>
+          <div class="nav-ed-right">
+            <div class="dropdown">
+              <i class="material-icons" style="font-size:36px;padding:7px">more_horiz</i>
+              <div class="dropdown-content">
+                <a onclick="excluirEdital()">Excluir</a>
+                <a onclick="renomearEdital()">Renomear</a>
+                </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container-infos-materias">
+          <div class="col-post-it">
+            <div>
+
+              <div class="post-it" id="post-it">
+                <h3>Informações Importantes:</h3>
+
+                <span>Banca:</span>
+                <span class="nome-banca" id="nome-banca"></span>
+                <span class="button-banca" onclick="mostrarPrompt('nome-banca')"><i class="material-icons" style="font-size:18px;padding:5px 0;color:gray;cursor: pointer;">edit</i></span>
+                <br>
+
+                <span>Inscrição de: </span>
+                <span class="data-inscricao-inicio" id="data-inscricao-inicio"></span>
+                <span class="button-banca" onclick="mostrarPrompt('data-inscricao-inicio')"><i class="material-icons" style="font-size:18px;padding:5px 0;color:gray;cursor: pointer;">edit</i></span>
+
+                <span>a: </span>
+                <span class="data-inscricao-fim" id="data-inscricao-fim"></span>
+                <span class="button-banca" onclick="mostrarPrompt('data-inscricao-fim')"><i class="material-icons" style="font-size:18px;padding:5px 0;color:gray;cursor: pointer;">edit</i></span>
+                <br>
+
+                <span>Data da Prova:</span>
+                <span class="data-prova" id="data-prova"></span>
+                <span class="button-banca" onclick="mostrarPrompt('data-prova')"><i class="material-icons" style="font-size:18px;padding:5px 0;color:gray;cursor: pointer;">edit</i></span>
+
+              </div>
+
+              <ul id="list">
+                <!-- A lista de itens será adicionada aqui -->
+              </ul>
+
+              <input type="text" id="item" placeholder="Adicionar item" style="background-color:#feff9c;">
+              <button onclick="addItem(1)">Adicionar</button>
+            </div>
+          </div>
+          <div class="col-materias" id="col-materias">
+            <div onclick="criarMateria()" class="button-add">Nova Matéria</div>
+            <!--Novos botões de matérias serão adicionados aqui-->
+          </div>
+        </div>
+
+        <div class="container-materia" id="container-materia" style="display:none">
+          <div class="nav-materia">
+            <div class="nav-mt-left">
+              <span id="nome-materia">Matéria Template</span>
+            </div>
+            <div class="nav-mt-right">
+              <div class="dropdown">
+                <i class="material-icons" style="font-size:36px;padding:7px">more_horiz</i>
+                <div class="dropdown-content">
+                  <a onclick="excluirMateria()">Excluir</a>
+                  <a onclick="renomearMateria()">Renomear</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="container-topics">
+            <div class="container-add-topics">
+              <input type="text" id="item-2" placeholder="Adicionar item" style="background-color:rgba(255, 255, 255, 0)">
+
+              <div class="botao-delimitadores">
+                <button onclick="createList()">Adicionar</button>
+                <input type="text" id="delimiters" placeholder="Delimitador(es) aqui!">
+                <label for="delimiters" style="font-size:14px">Utilize delimitador(es) para transformar um bloco de texto em lista de tópicos.</label>
+                <!-- <label for="input-text">Texto:</label>
+                <textarea id="input-text" rows="10"></textarea> -->
+              </div>
+
+            </div>
+            <ul id="list-2">
+              <!-- A lista de itens será adicionada aqui -->
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="/index.js"></script>
+    <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+
+  </body>
+</html>
