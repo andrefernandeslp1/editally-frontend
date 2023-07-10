@@ -8,7 +8,7 @@
 
     <title>EDITALLY</title>
 
-    <link rel="stylesheet" href="http://localhost:3000/index.css">
+    <link rel="stylesheet" href="index.css">
     <link rel="shortcut icon" href="logo-no-background.png" type="image/x-icon">
 
   </head>
@@ -21,7 +21,8 @@
           <i class="material-icons" style="font-size:36px;padding:7px">person</i>
           <div class="dropdown-content">
             <a id="nome-usuario" class="nome-usuario" style="color:white; cursor:default"></a>
-            <a href="/perfil.html">Perfil</a>
+            <!-- <a href="/perfil.html">Perfil</a> -->
+            <a onclick="setNomeUsuario()">Perfil</a>
             <a onclick="deslogar()">Sair</a>
             </div>
         </div>
@@ -132,7 +133,7 @@
       </div>
     </div>
 
-    <script type="text/javascript" src="/index.js"></script>
+    <script type="text/javascript" src="index.js"></script>
     <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
 
   </body>

@@ -1,9 +1,5 @@
 /* index.js */
 
-var script = document.createElement('script');
-script.src = 'meuservidor-frontend.js';
-document.head.appendChild(script);
-
 function exportarExcel() {
   let indexEdital = getIndexEdital(document.getElementById("nome-edital").innerHTML);
   let edital = usuario.editais[indexEdital];
@@ -51,30 +47,16 @@ function exportarExcel() {
 }
 
 function verificarLocalStorage() {
-  /*if (!localStorage.getItem('token') || !localStorage.getItem('email')) {
+  if (!localStorage.getItem('token') || !localStorage.getItem('email')) {
     window.location.href = '/login.html';
-  }*/
-  if (!localStorage.getItem('usuario')) {
-    let usuario = {nome:"", email:"", editalCorrente:"", editais: []};
-    localStorage.setItem('usuario', JSON.stringify(usuario));
   }
-  else {
-    lerUsuarioDoLocalStorage();
-  }
-}
-
-function setNomeUsuario() {
-  let nome = prompt("Digite seu nome:");
-  usuario.nome = nome;
-  document.getElementById("nome-usuario").innerHTML = "Olá, " + usuario.nome + ".";
 }
 
 function deslogar() {
-  //localStorage.removeItem("token");
-  //localStorage.removeItem("email");
-  localStorage.removeItem("usuario");
-  //window.location.href = "login.html";
-
+  localStorage.removeItem("token");
+  localStorage.removeItem("email");
+  usuario = {};
+  window.location.href = "login.html";
 }
 
 function enviarDadosAoServidor(){
@@ -82,16 +64,8 @@ function enviarDadosAoServidor(){
     sortEditaisEMaterias();
     const data = usuario;
     console.log("data: ",data);
-    try {
-      processarGravarDados(data);
-      resolve();
-    }
-    catch(error) {
-      console.error('Erro ao gravar dados:', error);
-      reject();
-    }
 
-    /*fetch('/gravar-dados', {
+    fetch('/gravar-dados', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -106,21 +80,13 @@ function enviarDadosAoServidor(){
     .catch(error => {
       console.error('Erro ao gravar dados:', error);
       reject();
-    });*/
+    });
   });
 }
 
 function recuperarDados(){
   return new Promise((resolve, reject) => {
-    try {
-      usuario = processRecuperarDados();
-      resolve();
-    }
-    catch(error) {
-      console.error('Erro ao recuperar dados:', error);
-      reject();
-    }
-    /*const data = { email: usuario.email };
+    const data = { email: usuario.email };
 
     fetch('/recuperar-dados', {
       method: 'POST',
@@ -140,7 +106,7 @@ function recuperarDados(){
     .catch(error => {
       console.error('Erro ao recuperar dados:', error);
       reject();
-    });*/
+    });
   });
 }
 
@@ -201,9 +167,9 @@ function validarToken() {
 //window.addEventListener('DOMContentLoaded', validarToken());
 
 window.onload = function() {
-  verificarLocalStorage();
+  //verificarLocalStorage();
 
-  //validarToken().then(() => {
+  validarToken().then(() => {
 
     recuperarDados().then(() => {
 
@@ -213,15 +179,15 @@ window.onload = function() {
 
       reloadButtonsEditais();
     });
-  //});
+  });
 };
 
 function processReloadButtonsEditais() {
-  //validarToken().then(() => {
+  validarToken().then(() => {
     recuperarDados().then(() => {
       reloadButtonsEditais();
     });
-  //});
+  });
 }
 
 function reloadButtonsEditais() {
@@ -265,11 +231,11 @@ function reloadButtonsEditais() {
 }
 
 function processReloadButtonsMaterias() {
-  //validarToken().then(() => {
+  validarToken().then(() => {
     recuperarDados().then(() => {
       reloadButtonsMaterias();
     });
-  //});
+  });
 }
 
 function reloadButtonsMaterias() {
@@ -338,7 +304,7 @@ function imprimirUsuarioNoCosole() {
 }
 
 //OBJETO USUÁRIO
-//let usuario = {};
+let usuario = {};
 //let usuario = {nome:"andre", email:"andre@gmail.com", editalCorrente:"", editais: []}
 /*
 let usuario_template =
