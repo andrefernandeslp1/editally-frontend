@@ -55,7 +55,7 @@ function verificarLocalStorage() {
     window.location.href = '/login.html';
   }*/
   if (!localStorage.getItem('usuario')) {
-    let usuario = {nome:"", email:"", editalCorrente:"", editais: []};
+    let usuario = {nome:"Usuário", email:"", editalCorrente:"", editais: []};
     localStorage.setItem('usuario', JSON.stringify(usuario));
   }
   else {
@@ -65,14 +65,24 @@ function verificarLocalStorage() {
 
 function setNomeUsuario() {
   let nome = prompt("Digite seu nome:");
+  if (nome == "" || nome == null) {
+    alert("Por favor, insira um nome");
+    return;
+  }
   usuario.nome = nome;
   document.getElementById("nome-usuario").innerHTML = "Olá, " + usuario.nome + ".";
+  gravarUsuarioNoLocalStorage();
 }
 
 function deslogar() {
   //localStorage.removeItem("token");
   //localStorage.removeItem("email");
-  localStorage.removeItem("usuario");
+  //criar alerta
+  if(confirm("Deseja realmente sair?")){
+    localStorage.removeItem("usuario");
+    //recarregar página
+    window.location.reload();
+  }
   //window.location.href = "login.html";
 
 }

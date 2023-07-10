@@ -261,7 +261,7 @@ const server = http.createServer((req, res) => {
   };
   */
 
-  function processarRecuperarDados() {
+  function processRecuperarDados() {
     return JSON.parse(localStorage.getItem('usuario'));
   }
 
