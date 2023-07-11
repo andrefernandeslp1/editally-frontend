@@ -4,6 +4,46 @@ var script = document.createElement('script');
 script.src = 'meuservidor-frontend.js';
 document.head.appendChild(script);
 
+function exportarUsuario() {
+  // transformar objeto usuario em documento json
+  let dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(usuario));
+  let downloadAnchorNode = document.createElement('a');
+  downloadAnchorNode.setAttribute("href", dataStr);
+  downloadAnchorNode.setAttribute("download", usuario.nome + ".json");
+  document.body.appendChild(downloadAnchorNode); // required for firefox
+  downloadAnchorNode.click();
+  downloadAnchorNode.remove();
+}
+
+//verificar se arquivo json tem o formato do objeto usuario. caso tenha, importar. caso não tenha, alertar.
+function importarUsuario() {
+  let input = document.createElement("input");
+  input.type = "file";
+  input.accept = ".json";
+  input.click();
+  input.onchange = function() {
+    let file = input.files[0];
+    let reader = new FileReader();
+    reader.readAsText(file);
+    reader.onload = function() {
+      let usuarioImportado = JSON.parse(reader.result);
+      //usar outro parametro para verificar se o arquivo tem o formato do objeto usuario
+      if(usuarioImportado.nome != undefined && usuarioImportado.email != undefined && usuarioImportado.editalCorrente != undefined && usuarioImportado.editais != undefined)
+      {
+        usuario = usuarioImportado;
+        gravarUsuarioNoLocalStorage();
+        imprimirUsuarioNoCosole();
+        window.location.reload();
+      }
+      else
+      {
+        alert("Arquivo inválido!");
+      }
+    };
+  };
+}
+
+
 function exportarExcel() {
   let indexEdital = getIndexEdital(document.getElementById("nome-edital").innerHTML);
   let edital = usuario.editais[indexEdital];
