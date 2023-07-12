@@ -50,6 +50,15 @@ header {
   font-size: 30px;
   padding: 10px;
 }
+.editally {
+  color: white;
+  font-size: 28px;
+  padding-left: 25px;
+  font-family: 'Tahoma',;
+  cursor: default;
+  display: flex;
+  align-items: center;
+}
 
 .nav-usuario {
   color: white;
@@ -59,7 +68,7 @@ header {
   display: flex;
   align-items: center;
 }
-
+/*
 .nome-usuario{
   color: white;
   padding-bottom: 5px;
@@ -67,6 +76,20 @@ header {
   cursor: pointer;
   display: flex;
   align-items: center;
+}
+*/
+.nome-usuario {
+  font-size: 20px;
+  color: white;
+  padding-bottom: 5px;
+  align-items: center;
+
+  /*deixar o texto em linha*/
+  display: inline-block;
+  /*no wrap*/
+  white-space: nowrap;
+  /*não deixar o texto quebrar*/
+  overflow: hidden;
 }
 
 /*DROPDOWN*/
@@ -97,6 +120,12 @@ header {
   align-items: center;
   height: 49px;
   cursor: pointer;
+    /*deixar o texto em linha*/
+    /*display: inline-block;*/
+    /*no wrap*/
+    white-space: nowrap;
+    /*não deixar o texto quebrar*/
+    overflow: hidden;
 }
 
 .dropdown-content a:hover {color: #021691;}
@@ -106,14 +135,7 @@ header {
   display: flex;
 }
 
-.nome-usuario {
-  /*deixar o texto em linha*/
-  display: inline-block;
-  /*no wrap*/
-  white-space: nowrap;
-  /*não deixar o texto quebrar*/
-  overflow: hidden;
-}
+
 
 .dropdown:hover .material-icons {
   color: #021691;
