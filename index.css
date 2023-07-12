@@ -53,14 +53,14 @@ header {
 .editally {
   color: white;
   font-size: 28px;
-  padding-left: 25px;
+  padding-left: 30px;
   font-family: 'Tahoma',;
   cursor: default;
   display: flex;
   align-items: center;
 }
 
-.nav-usuario {
+.nav-icons-left {
   color: white;
   padding: 10px;
   font-size: 20px;
