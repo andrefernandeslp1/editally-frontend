@@ -1,1 +1,1 @@
-https://andrefernandeslp1/github.io/editally/
+https://andrefernandeslp1.github.io/editally/
