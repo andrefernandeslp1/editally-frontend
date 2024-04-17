@@ -1,2 +1,2 @@
-Gitpages: https://andrefernandeslp1.github.io/editally/  
+Gitpages: https://andrefernandeslp1.github.io/Editally-Frontend/  
 Projeto Original: https://github.com/andrefernandeslp1/Projeto-WEB1-Enviar
